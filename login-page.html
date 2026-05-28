@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ARCA</title>
+
+    <link rel="stylesheet" href="assets/css/login.css">
+
+</head>
+
+<body>
+
+        <header class="header">
+    <div class="nav-wrapper">
+
+      <div class="nav-logo">
+        <img src="../../assets/imgs/logoarca.png" alt="Logo ARCA">
+      </div>
+
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Início</a></li>
+          <li class="nav-item"><a href="adocao.html">Adoção</a></li>
+          <li class="nav-item"><a href="castracao.html">Castração</a></li>
+          <li class="nav-item"><a href="denuncia.html">Denúncia</a></li>
+        </ul>
+      </nav>
+
+      <a href="login-page.html" class="nav-btn">Entrar</a>
+
+    </div>
+</header>
+    <main class="main-login">
+
+        <div class="login-container">
+
+            <h2>Bem-vindo!</h2>
+
+            <p class="subtitle">
+                Entre na sua conta para continuar ajudando animais a encontrarem um lar.
+            </p>
+
+
+            <form>
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" placeholder="Digite seu nome de usuário" required id="usuario">
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" placeholder="Digite sua senha" required id="senha">
+                </div>
+                <button type="button" class="btn-entrar" onclick="logar()">Entrar</button>
+            </form>
+        </div>
+
+
+        <div class="visual-container">
+
+            <img class="animal-illustration" src="../../assets/imgs/login imagem cg.jpg" alt="Ilustração">
+
+            <div class="visual-content">
+                <h2>Adotar é transformar vidas</h2>
+
+                <p>
+                    Faça parte da comunidade ARCA e ajude animais resgatados
+                    a encontrarem um lar cheio de amor e carinho.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function logar() {
+            let usuario = document.getElementById("usuario").value;
+            let senha = document.getElementById("senha").value;
+
+            if (usuario === "tutor" && senha === "123456") {
+                alert("Login bem-sucedido!");
+                window.location.href = "/pages/tutor/perfil-tutor.html";
+
+            }
+            else if (usuario === "candidato" && senha === "cand!098") {
+                alert("Login bem-sucedido!");
+                window.location.href = "/pages/candidato/buscar-animal.html";
+            }
+
+
+            else if (usuario === "Ong" && senha === "ong$-135") {
+                alert("Login bem-sucedido!");
+                window.location.href = "/pages/ong/perfil-ong.html";
+            }
+
+            else if (usuario === "prefeitura" && senha === "pref@456") {
+                alert("Login bem-sucedido!");
+                window.location.href = "../../pages/prefeitura/painel-prefeitura.html";
+            }
+            else {
+                alert("Usuário ou senha incorretos. Tente novamente.");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

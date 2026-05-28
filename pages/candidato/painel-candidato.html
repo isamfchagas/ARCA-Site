@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Candidato - ARCA</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
+                Tahoma, sans-serif;
+        }
+
+        body {
+            background: #f8f5f1;
+            color: #4d4d4d;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            padding-top: 74px;
+        }
+
+
+        a {
+            text-decoration: none;
+            
+        }
+
+        
+
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: #f8f5f1;
+            
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        
+        .nav-logo img {
+            height: 40px;
+            display: block;
+        }
+
+        
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: #333;
+            
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+
+        .nav-item a:hover {
+            color: #000;
+            
+        }
+
+
+        
+        .nav-btn {
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background-color: #b95050;
+            
+            color: #ffdbdb;
+            
+            transition: opacity 0.2s;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.85;
+        }
+
+
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #d1d1d1;
+            overflow: hidden;
+        }
+
+        .topo {
+            padding: 20px;
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        .topo h1 {
+            font-size: 28px;
+        }
+
+        .topo p {
+            color: #8f8f8f;
+            margin-top: 5px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 180px;
+            background: #eeeeee;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .card h2 {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #4d4d4d;
+        }
+
+        .card.ativo {
+            background: #dbe8ff;
+            color: #1f4d8f;
+        }
+
+        .card.ativo p {
+            color: #145a4b;
+        }
+
+        .conteudo {
+            padding: 0 20px 20px;
+        }
+
+        .titulo {
+            color: #cfcfcf;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .animal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icone {
+            width: 45px;
+            height: 45px;
+            background: #d6ebe5;
+            color: #145a4b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 22px;
+        }
+
+        .texto h3 {
+            margin-bottom: 5px;
+        }
+
+        .texto p {
+            color: #4d4d4d;
+            font-size: 14px;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .analise {
+            background: #fbe274;
+            color: #5b4300;
+        }
+
+        .aguardando {
+            background: #d1d1d1;
+            color: #4d4d4d;
+        }
+
+        .buscar {
+            padding: 20px;
+        }
+
+        .buscar button {
+            width: 100%;
+            padding: 16px;
+            background: #a7b884;
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+
+        }
+
+        .buscar button:hover {
+            opacity: 0.9;
+        }
+
+
+
+        @media(max-width:900px) {
+
+            .nav-wrapper {
+                flex-direction: column;
+                padding: 15px;
+                height: auto;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            body {
+                padding-top: 170px;
+            }
+
+        }
+
+        @media(max-width:700px) {
+
+            .linha-topo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .usuario {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .acoes {
+                flex-direction: column;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="nav-wrapper">
+
+            <div class="nav-logo">
+                <img src="../../assets/imgs/logoarca.png" alt="Logo ARCA">
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="buscar-animal.html">Animais</a></li>
+                    <li class="nav-item"><a href="painel-candidato.html">Painel</a></li>
+                </ul>
+            </nav>
+
+            <a href="../../index.html" class="nav-btn">Sair</a>
+
+        </div>
+    </header>
+
+
+
+    <div class="container">
+
+        <div class="topo">
+            <h1>Meu painel</h1>
+            <p>Olá, XXXXX</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>2</h2>
+                <p>Solicitações</p>
+            </div>
+
+            <div class="card ativo">
+                <h2>1</h2>
+                <p>Em análise</p>
+            </div>
+
+            <div class="card">
+                <h2>0</h2>
+                <p>Aprovadas</p>
+            </div>
+
+        </div>
+
+        <div class="conteudo">
+
+            <div class="titulo">
+                MINHAS SOLICITAÇÕES
+            </div>
+
+            <div class="animal">
+
+                <div class="info">
+                    <div class="icone">🐶</div>
+
+                    <div class="texto">
+                        <h3>Bento</h3>
+                        <p>Enviado há 2 dias</p>
+                    </div>
+                </div>
+
+                <div class="status analise">
+                    Em análise
+                </div>
+
+            </div>
+
+            <div class="animal">
+
+                <div class="info">
+                    <div class="icone">🐱</div>
+
+                    <div class="texto">
+                        <h3>Mimi</h3>
+                        <p>Enviado há 5 dias</p>
+                    </div>
+                </div>
+
+                <div class="status aguardando">
+                    Aguardando
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="buscar">
+            <a href="buscar-animal.html">
+                <button>Buscar mais animais</button>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
