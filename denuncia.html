@@ -143,21 +143,21 @@
             </div>
 
             <script>
-                // Função para mudar da tela inicial para o formulário
+               
                 function irParaFormulario() {
                     document.getElementById('tela-inicial').classList.add('hidden');
                     document.getElementById('tela-formulario').classList.remove('hidden');
                 }
 
-                // Função para voltar para a tela inicial
+                
                 function voltarParaInicio() {
                     document.getElementById('tela-formulario').classList.add('hidden');
                     document.getElementById('tela-inicial').classList.remove('hidden');
-                    document.getElementById('formDenuncia').reset(); // Limpa o formulário
-                    alternarAnonimato(true); // Reseta para anônimo por padrão
+                    document.getElementById('formDenuncia').reset(); 
+                    alternarAnonimato(true); 
                 }
 
-                // Função que mostra/esconde os campos de identificação do usuário
+                
                 function alternarAnonimato(isAnonimo) {
                     const secaoDados = document.getElementById('dados-denunciante');
                     const campoNome = document.getElementById('nome');
@@ -174,11 +174,11 @@
                     }
                 }
 
-                // Função executada ao enviar o formulário
+                
                 function enviarDenuncia(event) {
-                    event.preventDefault(); // Impede a página de recarregar
+                    event.preventDefault(); 
 
-                    // Aqui você capturaria os dados para enviar ao banco de dados/servidor
+                    
                     alert("Denúncia enviada com sucesso! Obrigado por ajudar.");
                     voltarParaInicio();
                 }
