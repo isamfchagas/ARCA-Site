@@ -80,7 +80,7 @@ a {
 }
 
 .nav-btn:hover {
-  opacity: 0.85;
+  opacity: .9;
 }
 
 .sobre {
@@ -137,6 +137,10 @@ a {
     font-size: 18px;
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+.btn-agendar:hover{
+    opacity: 0.9;
 }
 
 .info{

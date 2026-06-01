@@ -196,7 +196,7 @@ a {
 }
 
 .botao:hover {
-  background: #8fae6c;
+  opacity: .9;
 }
 
 .info , .botao{
