@@ -70,15 +70,119 @@
                 </div>
 
             </div>
-            <a href="login-page.html">
-                <button class="btn-denuncia">
-                    Fazer denúncia
-                </button>
-            </a>
 
-            <p class="login-info">
-                Para realizar uma denúncia é necessário possuir cadastro.
-            </p>
+            <div id="tela-inicial" class="container">
+                <h2>Denunciar salva vidas.</h2>
+                <p>Maus-tratos e abandono são crimes. A denúncia ajuda a proteger animais em situação de risco.</p>
+                <button class="btn-principal" onclick="irParaFormulario()">Fazer denúncia</button>
+            </div>
+
+            <div id="tela-formulario" class="container hidden">
+                <h2>Nova Denúncia</h2>
+                <p>Por favor, preencha os dados abaixo para registrar a ocorrência.</p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
+
+                <form id="formDenuncia" onsubmit="enviarDenuncia(event)">
+
+                    <div class="form-group">
+                        <label>Tipo de Denúncia:</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="anonimo" value="sim" checked
+                                    onclick="alternarAnonimato(true)">
+                                Anônima
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="anonimo" value="nao" onclick="alternarAnonimato(false)">
+                                Identificada (Seus dados protegidos)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="dados-denunciante" class="secao-identificacao hidden">
+                        <h3 style="margin-top:0; font-size: 16px; color: #4a6b82;">Seus Dados</h3>
+                        <div class="form-group">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" placeholder="Digite seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail para contato:</label>
+                            <input type="email" id="email" placeholder="seu-email@exemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo_crime">Tipo de Ocorrência:</label>
+                        <select id="tipo_crime" required>
+                            <option value="">Selecione uma opção...</option>
+                            <option value="maus-tratos">Maus-tratos (Violência/Falta de comida)</option>
+                            <option value="abandono">Abandono</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco">Endereço/Local do Fato:</label>
+                        <input type="text" id="endereco" required
+                            placeholder="Rua, número, bairro, cidade ou pontos de referência">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição dos Fatos:</label>
+                        <textarea id="descricao" required
+                            placeholder="Descreva detalhadamente a situação do animal, características do tutor/agressor, etc."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button type="button" class="btn-principal" style="background-color: #aaa;"
+                            onclick="voltarParaInicio()">Cancelar</button>
+                        <button type="submit" class="btn-principal">Enviar Denúncia</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <script>
+                // Função para mudar da tela inicial para o formulário
+                function irParaFormulario() {
+                    document.getElementById('tela-inicial').classList.add('hidden');
+                    document.getElementById('tela-formulario').classList.remove('hidden');
+                }
+
+                // Função para voltar para a tela inicial
+                function voltarParaInicio() {
+                    document.getElementById('tela-formulario').classList.add('hidden');
+                    document.getElementById('tela-inicial').classList.remove('hidden');
+                    document.getElementById('formDenuncia').reset(); // Limpa o formulário
+                    alternarAnonimato(true); // Reseta para anônimo por padrão
+                }
+
+                // Função que mostra/esconde os campos de identificação do usuário
+                function alternarAnonimato(isAnonimo) {
+                    const secaoDados = document.getElementById('dados-denunciante');
+                    const campoNome = document.getElementById('nome');
+                    const campoEmail = document.getElementById('email');
+
+                    if (isAnonimo) {
+                        secaoDados.classList.add('hidden');
+                        campoNome.removeAttribute('required');
+                        campoEmail.removeAttribute('required');
+                    } else {
+                        secaoDados.classList.remove('hidden');
+                        campoNome.setAttribute('required', 'required');
+                        campoEmail.setAttribute('required', 'required');
+                    }
+                }
+
+                // Função executada ao enviar o formulário
+                function enviarDenuncia(event) {
+                    event.preventDefault(); // Impede a página de recarregar
+
+                    // Aqui você capturaria os dados para enviar ao banco de dados/servidor
+                    alert("Denúncia enviada com sucesso! Obrigado por ajudar.");
+                    voltarParaInicio();
+                }
+            </script>
 
         </div>
 
